@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - SDA School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <link rel="preload" as="image" href="images/contact-hero.jpg">
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo-box">
+        <img src="images/school-logo.jpg" alt="SDA School Logo" class="logo" />
+        <h2>SDA School</h2>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <a href="home.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About us</a>
+        <a href="admission.html">Admissions</a>
+        <a href="contact.html" class="active-link">Contact</a>
+      </nav>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="contact-hero">
+    <div class="contact-overlay"></div>
+    <div class="container contact-hero-content">
+      <h1>CONTACT US</h1>
+      <p>Learning today, leading tomorrow.</p>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="section">
+    <div class="container">
+      <div class="form-card">
+        <h2 class="section-title form-title">Apply Now Form</h2>
+
+        <form id="contactForm" class="contact-form">
+          <div class="form-grid">
+            <div class="input-group">
+              <input type="text" id="studentName" name="studentName" placeholder="Student Name" required />
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="parentName" name="parentName" placeholder="Parent Name" required />
+            </div>
+
+            <div class="input-group split-input">
+              <input type="tel" id="phone" name="phone" placeholder="Phone" required />
+            </div>
+
+            <div class="input-group split-input">
+              <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+
+            <div class="input-group full-width">
+              <input type="text" id="classApplying" name="classApplying" placeholder="Class Applying" required />
+            </div>
+
+            <div class="input-group full-width">
+              <textarea id="message" name="message" placeholder="Message" rows="7"></textarea>
+            </div>
+          </div>
+
+          <div class="submit-wrap">
+            <button type="submit" class="btn btn-primary submit-btn" id="submitBtn">
+              Submit
+            </button>
+          </div>
+
+          <p id="formStatus" class="form-status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Details -->
+  <section class="section contact-details-section">
+    <div class="container">
+      <h2 class="section-title details-title">Contact Details</h2>
+
+      <div class="details-list">
+        <div class="detail-item">
+          <div class="detail-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <p>
+            Samba Street, Near LIC Office, Tenkasi to Tirunelveli Main Road, Tenkasi - 627811
+          </p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <p>04633 223 288</p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <p>sdasnkl87@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Optional Map -->
+  <section class="section light-section map-section">
+    <div class="container">
+      <h2 class="section-title">Find Us on Map</h2>
+      <div class="map-box">
+        <iframe
+          src="https://www.google.com/maps?q=SDA+School+Tenkasi&output=embed"
+          width="100%"
+          height="380"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="images/school-logo.jpg" alt="SDA Logo" />
+          <div>
+            <h3>SDA School</h3>
+            <p>Empowering young minds for a bright future since 1995</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="home.html#academics">Academics</a></li>
+          
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Phone: 04633 223 288</p>
+        <p>Email: sdasnkl87@gmail.com</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© Copyright SDA School Tenkasi | Designed & Maintained by Fusionix Technologies</p>
+    </div>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>

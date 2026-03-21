@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery - SDA School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <!-- Preload hero image to reduce flash before image appears -->
+  <link rel="preload" as="image" href="images/School-frontview.JPG" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f7f7f7;
+      color: #111;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    /* HEADER */
+    .header {
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #222;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .logo-box h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .navbar a {
+      color: #333;
+      font-size: 1.08rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #c63c48;
+    }
+
+    .active-link {
+      background: #c63c48;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 999px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .gallery-hero {
+      position: relative;
+      min-height: 520px;
+      background-color: #2b0f12; /* fallback to avoid ash flash */
+      background-image: url("images/School-frontview.JPG");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .gallery-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 60px 20px;
+    }
+
+    .gallery-hero-content h1 {
+      font-family: "Baloo 2", cursive;
+      font-size: 4.1rem;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-hero-content p {
+      margin-top: 18px;
+      font-size: 1.25rem;
+      font-weight: 400;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      padding: 16px 34px;
+      border-radius: 40px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #db525b;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(219, 82, 91, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #c9444d;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-outline {
+      border: 3px solid #d5515b;
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #d5515b;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-light {
+      background: #fff;
+      color: #ef6a55;
+      box-shadow: 0 8px 18px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-outline-light {
+      border: 3px solid #fff;
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 0;
+    }
+
+    .light-section {
+      background: #fff;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3.3rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #000;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 1.08rem;
+      color: #444;
+    }
+
+    /* FILTERS */
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 45px;
+    }
+
+    .filter-btn {
+      border: 3px solid #c73b47;
+      background: #fff;
+      color: #c73b47;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #c73b47;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* GALLERY GRID */
+    .gallery-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .gallery-card {
+      background: #fff;
+      border: 4px solid #c73b47;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: all 0.35s ease-in-out;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .gallery-image-wrap {
+      position: relative;
+      background: #f1e7e8; /* soft fallback instead of ash */
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-card-content {
+      padding: 18px 18px 20px;
+    }
+
+    .gallery-card-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111;
+    }
+
+    .gallery-card-content p {
+      font-size: 0.96rem;
+      color: #555;
+    }
+
+    .gallery-card.hide {
+      display: none;
+    }
+
+    /* CTA */
+    .cta-box {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #ef5b4f, #f09257, #de2b2b);
+      border-radius: 22px;
+      padding: 44px 30px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-box h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #98000a;
+      color: #fff;
+      margin-top: 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.1fr 1fr;
+      gap: 30px;
+      padding: 40px 0;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .footer-brand img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 1.05rem;
+      max-width: 270px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a,
+    .footer-col p,
+    .footer-col a {
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.5rem;
+      display: grid;
+      place-items: center;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      padding: 18px 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 1rem;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 30px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      background: #fff;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -18px;
+      right: -6px;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: #fff;
+      color: #c73b47;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-hero-content h1 {
+        font-size: 3.3rem;
+      }
+
+      .cta-box h2 {
+        font-size: 2.7rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 86px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        padding: 25px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+      }
+
+      .logo-box h2 {
+        font-size: 1.4rem;
+      }
+
+      .gallery-hero {
+        min-height: 460px;
+      }
+
+      .gallery-hero-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .gallery-hero-content p {
+        font-size: 1.02rem;
+      }
+
+      .section-title {
+        font-size: 2.3rem;
+      }
+
+      .gallery-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box h2 {
+        font-size: 2.1rem;
+      }
+
+      .btn {
+        min-width: 190px;
+        font-size: 1rem;
+        padding: 14px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 92%;
+      }
+
+      .gallery-hero-content h1 {
+        font-size: 1.95rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .gallery-card {
+        border-radius: 20px;
+      }
+
+      .gallery-card-content {
+        padding: 16px;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+      }
+
+      .cta-box h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo-box">
+        <img src="images/school-logo.jpg" alt="SDA School Logo" class="logo" />
+        <h2>SDA School</h2>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <a href="home.html">Home</a>
+        <a href="gallery.html" class="active-link">Gallery</a>
+        <a href="about.html">About us</a>
+        
+        <a href="admission.html">Admissions</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="gallery-hero">
+    <div class="gallery-overlay"></div>
+    <div class="container gallery-hero-content">
+      <h1>OUR SCHOOL GALLERY</h1>
+      <p>
+        Capturing the vibrant moments, celebrations, achievements, and memories that make SDA School special
+      </p>
+      <div class="hero-buttons">
+        <a href="#gallery-section" class="btn btn-primary">View Gallery</a>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Intro -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Memories at SDA School</h2>
+      <p class="section-subtitle">
+        Explore our annual celebrations, patriotic events, sports activities, and educational tours through these memorable moments.
+      </p>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="annual">Annual Day</button>
+        <button class="filter-btn" data-filter="independence">Independence Day</button>
+        <button class="filter-btn" data-filter="sports">Sports Day</button>
+        <button class="filter-btn" data-filter="tours">Tours</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section light-section" id="gallery-section">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+
+        <!-- Annual Day -->
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day1.JPG" alt="Annual Day 1" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Celebrating student talents and stage performances.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day2.JPG" alt="Annual Day 2" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Moments of joy, creativity, and confidence.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day3.JPG" alt="Annual Day 3" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Showcasing vibrant performances and teamwork.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day4.JPG" alt="Annual Day 4" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Special highlights from our annual celebration.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day5.JPG" alt="Annual Day 5" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Students shining with pride and passion.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day6.JPG" alt="Annual Day 6" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>A day filled with celebration and inspiration.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day7.JPG" alt="Annual Day 7" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Capturing joyful and memorable stage moments.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day8.JPG" alt="Annual Day 8" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Celebrating the spirit of school togetherness.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day9.JPG" alt="Annual Day 9" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Honouring creativity, effort, and excellence.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day10.JPG" alt="Annual Day 10" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Moments that reflect the energy of our students.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day11.JPG" alt="Annual Day 11" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>A proud celebration of talent and dedication.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day12.JPG" alt="Annual Day 12" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Bright performances and unforgettable smiles.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day13.JPG" alt="Annual Day 13" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Memories that celebrate learning and culture.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="annual">
+          <div class="gallery-image-wrap">
+            <img src="images/Annual-day14.JPG" alt="Annual Day 14" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Annual Day</h3>
+            <p>Grand closing moments from the annual event.</p>
+          </div>
+        </div>
+
+        <!-- Independence Day -->
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/Independance-day1.JPG" alt="Independence Day 1" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>Celebrating patriotism with pride and unity.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/independence-day2.jpg" alt="Independence Day 2" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>Students expressing love for the nation.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/Independence-day3.jpg" alt="Independence Day 3" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>Patriotic moments that inspire every child.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/independence-day5.jpg" alt="Independence Day 5" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>Flag, culture, and celebration in harmony.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/independence-day6.jpg" alt="Independence Day 6" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>A meaningful tribute to our country.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="independence">
+          <div class="gallery-image-wrap">
+            <img src="images/independence-day7.JPG" alt="Independence Day 7" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Independence Day</h3>
+            <p>Moments filled with national pride.</p>
+          </div>
+        </div>
+
+        <!-- Sports Day -->
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day1.jpg" alt="Sports Day 1" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Encouraging energy, teamwork, and confidence.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/sports-day2.jpg" alt="Sports Day 2" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Active participation and healthy competition.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sport-day3.jpg" alt="Sports Day 3" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Students performing with passion and spirit.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/sports-day4.jpg" alt="Sports Day 4" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Exciting games and enthusiastic participation.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day5.jpg" alt="Sports Day 5" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>A celebration of effort, discipline, and teamwork.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day6.jpg" alt="Sports Day 6" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Students giving their best on the field.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day8.jpg" alt="Sports Day 8" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Strong sportsmanship and joyful moments.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day10.jpg" alt="Sports Day 10" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>A proud display of talent and determination.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day11.jpg" alt="Sports Day 11" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Sporting excellence in action.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day12.jpg" alt="Sports Day 12" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Students enjoying the spirit of competition.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="sports">
+          <div class="gallery-image-wrap">
+            <img src="images/Sports-day13.jpg" alt="Sports Day 13" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>Sports Day</h3>
+            <p>Memorable victories and inspiring teamwork.</p>
+          </div>
+        </div>
+
+        <!-- Tours -->
+        <div class="gallery-card" data-category="tours">
+          <div class="gallery-image-wrap">
+            <img src="images/school-tours1.jpg" alt="School Tour 1" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>School Tours</h3>
+            <p>Learning beyond the classroom through exploration.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="tours">
+          <div class="gallery-image-wrap">
+            <img src="images/school-tours2.jpg" alt="School Tour 2" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>School Tours</h3>
+            <p>Educational experiences that create lasting memories.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="tours">
+          <div class="gallery-image-wrap">
+            <img src="images/School-tours3.jpg" alt="School Tour 3" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>School Tours</h3>
+            <p>Students discovering new places and ideas.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="tours">
+          <div class="gallery-image-wrap">
+            <img src="images/School-tours4.jpg" alt="School Tour 4" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>School Tours</h3>
+            <p>Moments of joy, learning, and togetherness.</p>
+          </div>
+        </div>
+
+        <div class="gallery-card" data-category="tours">
+          <div class="gallery-image-wrap">
+            <img src="images/School-tours5.jpg" alt="School Tour 5" loading="lazy">
+          </div>
+          <div class="gallery-card-content">
+            <h3>School Tours</h3>
+            <p>Experiences that enrich every student's journey.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Discover Life at SDA School</h2>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-light">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="images/school-logo.jpg" alt="SDA Logo" />
+          <div>
+            <h3>SDA School</h3>
+            <p>Empowering young minds for a bright future since 1995</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+        
+          <li><a href="admission.html">Admissions</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Phone: 04633 223 288</p>
+        <p>Email: sdasnkl87@gmail.com</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© Copyright SDA School Tenkasi | Designed & Maintained by Fusionix Technologies</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightboxImg" src="" alt="Preview">
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+
+    if (menuToggle && navbar) {
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".navbar a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navbar.classList.remove("active");
+        });
+      });
+    }
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryCards = document.querySelectorAll(".gallery-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.getAttribute("data-filter");
+
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        galleryCards.forEach((card) => {
+          const category = card.getAttribute("data-category");
+
+          if (filter === "all" || category === filter) {
+            card.classList.remove("hide");
+          } else {
+            card.classList.add("hide");
+          }
+        });
+      });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".gallery-card img").forEach((img) => {
+      img.addEventListener("click", () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("active")) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>

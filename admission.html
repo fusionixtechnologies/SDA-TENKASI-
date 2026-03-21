@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admissions - SDA School</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
+  <link rel="preload" as="image" href="images/admission-hero.jpg">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #ffffff;
+      color: #111;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    /* HEADER */
+    .header {
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #222;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+    }
+
+    .logo-box h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .navbar a {
+      color: #333;
+      font-size: 1.08rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #c63c48;
+    }
+
+    .active-link {
+      background: #c63c48;
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 999px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .admission-hero {
+      position: relative;
+      min-height: 520px;
+      background-color: #2b0f12;
+      background-image: url("images/Annual-day1.JPG");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admission-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+    }
+
+    .admission-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 60px 20px;
+    }
+
+    .admission-hero-content h1 {
+      font-family: "Baloo 2", cursive;
+      font-size: 4.2rem;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .admission-hero-content p {
+      margin-top: 18px;
+      font-size: 1.25rem;
+      font-weight: 400;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      padding: 16px 34px;
+      border-radius: 40px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #db525b;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(219, 82, 91, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #c9444d;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-outline {
+      border: 3px solid #d5515b;
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #d5515b;
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-light {
+      background: #fff;
+      color: #ef6a55;
+      box-shadow: 0 8px 18px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-light:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-outline-light {
+      border: 3px solid #fff;
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 80px 0;
+    }
+
+    .light-section {
+      background: #fff;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3.3rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: #000;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 45px;
+      font-size: 1.08rem;
+      color: #444;
+    }
+
+    /* PROCESS */
+    .process-wrapper {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 35px;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .circle {
+      width: 56px;
+      height: 56px;
+      background: #c73b47;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 8px 18px rgba(199, 59, 71, 0.2);
+    }
+
+    .line {
+      width: 4px;
+      height: 90px;
+      background: #c73b47;
+      border-radius: 50px;
+      opacity: 0.25;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .box {
+      display: flex;
+      gap: 18px;
+      background: #fff;
+      padding: 24px 24px;
+      border-radius: 24px;
+      border: 4px solid #c73b47;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s ease;
+    }
+
+    .box.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .box:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .box.show:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      border-radius: 50%;
+      border: 3px solid #c73b47;
+      color: #c73b47;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+    }
+
+    .box h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .box p {
+      font-size: 1.02rem;
+      color: #444;
+    }
+
+    /* DOCUMENTS */
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .doc-card {
+      background: #fff;
+      border: 4px solid #c73b47;
+      border-radius: 24px;
+      padding: 30px 22px;
+      text-align: center;
+      min-height: 210px;
+      transition: all 0.35s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .doc-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 14px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .doc-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 3px solid #c73b47;
+      color: #c73b47;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      margin: 0 auto 18px;
+    }
+
+    .doc-card h3 {
+      font-size: 1.28rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .doc-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* NOTE BOX */
+    .note-box {
+      margin-top: 45px;
+      background: #fff7f7;
+      border-left: 6px solid #c73b47;
+      border-radius: 18px;
+      padding: 22px 24px;
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .note-box h4 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .note-box p {
+      color: #444;
+    }
+
+    /* CTA */
+    .cta-box {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #ef5b4f, #f09257, #de2b2b);
+      border-radius: 22px;
+      padding: 44px 30px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-box h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      font-size: 1.08rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #98000a;
+      color: #fff;
+      margin-top: 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1.1fr 1fr;
+      gap: 30px;
+      padding: 40px 0;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .footer-brand img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+    }
+
+    .footer-brand h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 1.05rem;
+      max-width: 270px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.6rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a,
+    .footer-col p,
+    .footer-col a {
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1.5rem;
+      display: grid;
+      place-items: center;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      padding: 18px 10px;
+    }
+
+    .footer-bottom p {
+      font-size: 1rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .admission-hero-content h1 {
+        font-size: 3.3rem;
+      }
+
+      .cta-box h2 {
+        font-size: 2.7rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar {
+        position: absolute;
+        top: 86px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        padding: 25px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+      }
+
+      .logo-box h2 {
+        font-size: 1.4rem;
+      }
+
+      .admission-hero {
+        min-height: 470px;
+      }
+
+      .admission-hero-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .admission-hero-content p {
+        font-size: 1.05rem;
+      }
+
+      .section-title {
+        font-size: 2.3rem;
+      }
+
+      .process-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .line {
+        width: 45px;
+        height: 4px;
+      }
+
+      .documents-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box h2 {
+        font-size: 2.1rem;
+      }
+
+      .btn {
+        min-width: 190px;
+        font-size: 1rem;
+        padding: 14px 24px;
+      }
+
+      .box {
+        padding: 22px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: 92%;
+      }
+
+      .admission-hero-content h1 {
+        font-size: 1.95rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+
+      .section-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 30px;
+      }
+
+      .box,
+      .doc-card {
+        border-radius: 20px;
+      }
+
+      .icon,
+      .doc-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        font-size: 1.35rem;
+      }
+
+      .footer-brand {
+        flex-direction: column;
+      }
+
+      .cta-box h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <div class="logo-box">
+        <img src="images/school-logo.jpg" alt="SDA School Logo" class="logo" />
+        <h2>SDA School</h2>
+      </div>
+
+      <nav class="navbar" id="navbar">
+        <a href="home.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About us</a>
+        
+        <a href="admission.html" class="active-link">Admissions</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="admission-hero">
+    <div class="admission-overlay"></div>
+    <div class="container admission-hero-content">
+      <h1>Admissions Open 2026 - 27</h1>
+      <p>
+        Invite your children into a future of holistic education, strong values, and meaningful growth. Begin the admission journey with SDA School today.
+      </p>
+      <div class="hero-buttons">
+        <a href="#admission-process" class="btn btn-primary">Start Enquiry</a>
+        <a href="index.html#contact" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Process -->
+  <section class="section" id="admission-process">
+    <div class="container">
+      <h2 class="section-title">Admission Process</h2>
+      <p class="section-subtitle">
+        Our admission process is simple, supportive, and designed to help parents complete each step with clarity and ease.
+      </p>
+
+      <div class="process-wrapper">
+        <div class="timeline">
+          <div class="circle">1</div>
+          <div class="line"></div>
+          <div class="circle">2</div>
+          <div class="line"></div>
+          <div class="circle">3</div>
+          <div class="line"></div>
+          <div class="circle">4</div>
+        </div>
+
+        <div class="steps">
+          <div class="box">
+            <div class="icon"><i class="fa-solid fa-file-signature"></i></div>
+            <div>
+              <h3>Fill the Application</h3>
+              <p>Complete the admission enquiry form with the required student and parent details.</p>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
+            <div>
+              <h3>Submit Documents</h3>
+              <p>Provide all necessary certificates and supporting documents for verification.</p>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="icon"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <h3>Attend Interaction</h3>
+              <p>Parents and students may be invited for a short interaction with the school team.</p>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div>
+              <h3>Receive Confirmation</h3>
+              <p>After successful review, admission confirmation and the next instructions will be shared.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Required Documents -->
+  <section class="section light-section">
+    <div class="container">
+      <h2 class="section-title">Required Documents</h2>
+      <p class="section-subtitle">
+        Keep the following documents ready during the admission process for a smooth and quick verification.
+      </p>
+
+      <div class="documents-grid">
+        <div class="doc-card">
+          <div class="doc-icon"><i class="fa-solid fa-certificate"></i></div>
+          <h3>Birth Certificate</h3>
+          <p>Valid proof of the student’s date of birth.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <h3>Transfer Certificate</h3>
+          <p>Required for students joining from another school.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-icon"><i class="fa-solid fa-images"></i></div>
+          <h3>Passport Photos</h3>
+          <p>Recent student photographs for records and documentation.</p>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-icon"><i class="fa-solid fa-id-card"></i></div>
+          <h3>ID Proof</h3>
+          <p>Parent or guardian identity proof for verification purposes.</p>
+        </div>
+      </div>
+
+   
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Ready to Join SDA School?</h2>
+        <p>
+          Take the first step toward a strong academic future and value-based education for your child.
+        </p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-light">Start Admission Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <img src="images/school-logo.jpg" alt="SDA Logo" />
+          <div>
+            <h3>SDA School</h3>
+            <p>Empowering young minds for a bright future since 1995</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          
+          <li><a href="admission.html">Admissions</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Phone: 04633 223 288</p>
+        <p>Email: sdasnkl87@gmail.com</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© Copyright SDA School Tenkasi | Designed & Maintained by Fusionix Technologies</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+
+    if (menuToggle && navbar) {
+      menuToggle.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+
+      document.querySelectorAll(".navbar a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navbar.classList.remove("active");
+        });
+      });
+    }
+
+    const boxes = document.querySelectorAll(".box");
+
+    function revealBoxes() {
+      boxes.forEach((box, index) => {
+        const top = box.getBoundingClientRect().top;
+
+        if (top < window.innerHeight - 100) {
+          setTimeout(() => {
+            box.classList.add("show");
+          }, index * 180);
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealBoxes);
+    window.addEventListener("load", revealBoxes);
+  </script>
+</body>
+</html>
